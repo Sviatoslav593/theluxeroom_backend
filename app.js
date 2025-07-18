@@ -32,11 +32,11 @@ app.post("/orders", async (req, res) => {
     items,
     total = 0,
   } = req.body;
-
+  console.log("Отримані дані для вставки:", req.body);
   try {
-    await db.pool.query(
+    const queryResult = await db.pool.query(
       `INSERT INTO orders (first_name, last_name, address, city, phone, comments, items, total)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id`,
       [
         firstName,
         lastName,
@@ -48,6 +48,7 @@ app.post("/orders", async (req, res) => {
         total,
       ]
     );
+    console.log("Успішно вставлено, ID:", queryResult.rows[0].id);
     res.send("✅ Замовлення прийнято та збережено в базі!");
   } catch (err) {
     console.error("Детальна помилка вставки:", err.message, err.stack);
