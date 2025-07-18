@@ -5,7 +5,13 @@ const db = require("./db"); // Імпорт pool з db.js
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://theluxeroom-frontend.vercel.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Для сумісності з формами
 
