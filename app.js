@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://theluxeroom-frontend.vercel.app",
+    origin: "https://www.theluxeroom.net/",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
