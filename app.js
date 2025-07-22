@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://www.theluxeroom.net/",
+    origin: "https://www.theluxeroom.net",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
