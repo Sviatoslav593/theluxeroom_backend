@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser"); // Додаємо для обробки form-data
@@ -16,6 +17,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Для сумісності з формами
 
 // Ендпоінт для продуктів (використовуємо db.pool)
+const frontendPath = path.join(__dirname, "../theluxeroom-frontend");
+app.use(express.static(frontendPath));
 app.get("/products", async (req, res) => {
   try {
     const result = await db.pool.query("SELECT * FROM products");
