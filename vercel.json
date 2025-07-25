@@ -11,5 +11,18 @@
       "src": "/(.*)",
       "dest": "/app.js"
     }
+  ],
+  "cleanUrls": true,
+  "rewrites": [],
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        }
+      ]
+    }
   ]
 }
