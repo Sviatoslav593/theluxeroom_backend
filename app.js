@@ -17,18 +17,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Для сумісності з формами
 
 // Ендпоінт для продуктів (використовуємо db.pool)
-const frontendPath = path.join(__dirname, "../theluxeroom-frontend");
-app.use(express.static(frontendPath));
-//  Обробка головної сторінки
-app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
-});
-app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "logo.png"));
-});
-app.get("/", (req, res) => {
-  res.sendFile(path.join(frontendPath, "sitemap.xml"));
-});
 app.get("/products", async (req, res) => {
   try {
     const result = await db.pool.query("SELECT * FROM products");
