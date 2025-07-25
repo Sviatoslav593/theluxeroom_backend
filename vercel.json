@@ -12,8 +12,6 @@
       "dest": "/app.js"
     }
   ],
-  "cleanUrls": true,
-  "rewrites": [],
   "headers": [
     {
       "source": "/sitemap.xml",
