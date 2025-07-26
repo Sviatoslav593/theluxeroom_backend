@@ -14,6 +14,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "/"))); // Додай у app.js після app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true })); // Для сумісності з формами
 
 // Ендпоінт для продуктів (використовуємо db.pool)
