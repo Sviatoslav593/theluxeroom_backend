@@ -14,7 +14,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "/"))); // Додай у app.js після app.use(express.json());
+app.use(express.static(path.join(__dirname, "/")));
 app.use(bodyParser.urlencoded({ extended: true })); // Для сумісності з формами
 
 // Ендпоінт для продуктів (використовуємо db.pool)
@@ -30,16 +30,8 @@ app.get("/products", async (req, res) => {
 
 // Новий ендпоінт для створення замовлення
 app.post("/orders", async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    address,
-    city,
-    phone,
-    comments,
-    items,
-    total = 0,
-  } = req.body;
+  const { firstName, lastName, address, city, phone, comments, items, total } =
+    req.body;
   console.log("Отримані дані для вставки:", req.body);
   try {
     const queryResult = await db.pool.query(
